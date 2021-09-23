@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import AuthCard from '../Card';
 import './styles.scss';
+import { makelogin } from 'core/utils/request';
 
 type FormData = {
-    email: string;
+    username: string;
     password: string;
 }
 
@@ -15,7 +16,7 @@ const Login = () => {
 
     const onSubmit = (data: FormData) => {
         console.log(data);
-        //Chamar API de autenticação
+        makelogin(data)
     }
     return (
         <AuthCard title="login">
@@ -24,7 +25,7 @@ const Login = () => {
             type="email" 
             className="form-control input-base margin-bottom-30"
             placeholder="Email"
-            {...register('email')}
+            {...register('username')}
            /> 
             <input 
             type="password" 
@@ -49,6 +50,6 @@ const Login = () => {
         </form>
         </AuthCard>
     )
-}
+    }
 
 export default Login;
